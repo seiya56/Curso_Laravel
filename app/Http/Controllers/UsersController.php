@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -24,10 +24,14 @@ class UsersController extends Controller
        
         return view('users.create');
     }
-    public function store (){
+    public function store (Request $request){
         
        
-        dd("cadastrando usúario");
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        User::create($data);
+
+        return redirect() ->route('users.index');
     }
     
 }

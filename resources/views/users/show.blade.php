@@ -8,7 +8,7 @@
 <ul>
     <li>
       {{ $user ->name }}  -
-      {{ $user ->email }}  
+      {{ $user ->email }}  <a href="{{route('users.index')}}">Voltar</a>
     </li>
 </ul>
 @endsection
